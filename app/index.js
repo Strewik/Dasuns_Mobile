@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
 const index = () => {
   return (
     <View>
       <Text>Starter pack</Text>
+      
     </View>
   )
 }
