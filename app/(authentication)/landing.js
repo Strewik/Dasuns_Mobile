@@ -50,7 +50,7 @@ const SplashScreen = ({ navigation }) => {
         </Text>
         <Text style={styles.text}>Sign in with account</Text>
         <View style={styles.button}>
-          <TouchableOpacity onPress={() => router.push("/(authenticate)/login")}>
+          <TouchableOpacity onPress={() => router.push("/login")}>
             <LinearGradient
               colors={["#08d4c4", "#01ab9d"]}
               style={styles.signIn}
