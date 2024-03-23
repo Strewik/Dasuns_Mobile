@@ -24,7 +24,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [profileImage, setProfileImage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const handleRegister = () => {
@@ -33,7 +33,7 @@ const Register = () => {
       name: name,
       email: email,
       password: password,
-      profileImage: image,
+      profileImage: profileImage,
     };
     console.log("User data: " + user.email);
     axios
@@ -141,7 +141,7 @@ const Register = () => {
                 placeholder="Image url"
                 style={styles.textInput}
                 autoCapitalize="none"
-                onChangeText={(text) => setImage(text)}
+                onChangeText={(text) => setProfileImage(text)}
               />
               {name.check_textInputChange ? (
                 <Animatable.View animation="bounceIn">
