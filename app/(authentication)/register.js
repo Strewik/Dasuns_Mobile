@@ -37,7 +37,7 @@ const Register = () => {
     };
     console.log("User data: " + user.email);
     axios
-      .post("http://127.0.0.1:3000/register", user)
+      .post("http://10.0.2.2:3000/register", user)
       .then((response) => {
         console.log(response);
         Alert.alert(
@@ -47,7 +47,7 @@ const Register = () => {
         setName("");
         setEmail("");
         setPassword("");
-        setImage("");
+        profileImage("");
       })
       .catch((error) => {
         Alert.alert(
