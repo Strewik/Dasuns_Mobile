@@ -31,37 +31,38 @@ const ServicesScreen = () => {
   const services = [
     {
       id: "personalAssistance",
-      image: "https://source.unsplash.com/random/300x150",
+      // image: "./Personal-Assistant.jpg",
+      image: require("./Personal-Assistant.jpg"),
       title: "Personal Assistance",
       modalContent: "Content for Personal Assistance",
     },
     {
       id: "captioning",
-      image: "https://source.unsplash.com/random/301x150",
+      image: require("../../../assets/images/Closed-Caption.jpg"),
       title: "Captioning",
       modalContent: "Content for Captioning",
     },
     {
       id: "localSign",
-      image: "https://source.unsplash.com/random/302x150",
+      image: require("../../../assets/images/signLanguage.jpg"),
       title: "Local sign language",
       modalContent: "Content for local sign language",
     },
     {
       id: "internationalSign",
-      image: "https://source.unsplash.com/random/303x150",
+      image: require("../../../assets/images/International-signLanguage.jpg"),
       title: "International sign language",
       modalContent: "Content for International sign language",
     },
     {
       id: "mobilityGuide",
-      image: "https://source.unsplash.com/random/304x150",
+      image: require("../../../assets/images/Mobility-Guide.jpg"),
       title: "Mobility guide",
       modalContent: "Content for mobility guide",
     },
     {
       id: "Tactile",
-      image: "https://source.unsplash.com/random/305x150",
+      image: require("../../../assets/images/Mobility-Guide.jpg"),
       title: "Tactile",
       modalContent: "Content for Tactile",
     },
@@ -74,7 +75,8 @@ const ServicesScreen = () => {
         {services.map((service) => (
           <View key={service.id} style={styles.column}>
             <View style={styles.card}>
-              <Image source={{ uri: service.image }} style={styles.cardImage} />
+              {/* <Image source={{ uri: service.image }} style={styles.cardImage} /> */}
+              <Image source={service.image} style={styles.cardImage} />
               <View style={styles.body}>
                 <Text style={styles.header}>{service.title}</Text>
                 <TouchableOpacity onPress={() => openModal(service.id)}>
@@ -142,7 +144,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: "100%",
-    height: 120,
+    height: 140,
     resizeMode: "cover",
     // borderRadius: 20,
     borderTopLeftRadius: 10,

@@ -89,7 +89,7 @@ const Login = () => {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#009387" barStyle="light-content" />
+          <StatusBar backgroundColor="#37BEA7" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.text_header}>Welcome!</Text>
           </View>
@@ -246,7 +246,7 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#37BEA7",
   },
   header: {
     flex: 1,

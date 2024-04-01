@@ -65,7 +65,7 @@ const Register = () => {
   return (
     <View>
       <View style={styles.container}>
-        <StatusBar backgroundColor="#009387" barStyle="light-content" />
+        <StatusBar backgroundColor="#37BEA7" barStyle="light-content" />
         <View style={styles.header}>
           <Text style={styles.text_header}>Register Now now!</Text>
         </View>
@@ -218,7 +218,7 @@ export default Register;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#37BEA7",
   },
   header: {
     flex: 1,

@@ -6,11 +6,16 @@ import {
     Image,
     TouchableOpacity,
     Platform,
+    Dimensions,
  } from "react-native";
  import React, { useState, useRef, useEffect } from "react";
  import Carousel, { Pagination, ParallaxImage } from "react-native-snap-carousel";
  
  import { views1, views2 } from "./data";
+ const screenWidth = Dimensions.get("window").width;
+  const sliderWidth = screenWidth * 0.8;
+  const itemWidth = screenWidth * 0.8; // Adjust this value if you want the items to be smaller than the slider width
+
  
 //  const renderItem1 = ({ item }) => {
 //     return (
@@ -49,7 +54,7 @@ import {
  const renderItem3 = ({ item }) => {
     return (
        <View style={styles.renderItem1_parentView1}>
-          <Image source={{ uri: item.imgUrl }} style={[styles.renderItem1_img, { height: 250 }]} />
+          <Image source={item.image} style={[styles.renderItem1_img, { height: 250 }]} />
        </View>
     );
  };

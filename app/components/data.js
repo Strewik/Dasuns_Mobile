@@ -1,27 +1,27 @@
 export const views1 = [
     {
-       imgUrl: "https://picsum.photos/800/1200?random=1",
-       title: "Airport Cabs",
+       image: require("../../assets/images/Closed-Caption.jpg"),
+       title: "Closed Captioning",
     },
     {
-       imgUrl: "https://picsum.photos/800/1200?random=3",
-       title: "Gift Cards",
+      image: require("../../assets/images/signLanguage.jpg"),
+       title: "Local Sign Language",
     },
     {
-       imgUrl: "https://picsum.photos/800/1200?random=5",
-       title: "Hourly Stays",
+      image: require("../../assets/images/International-signLanguage.jpg"),
+       title: "International sign language",
     },
     {
-       imgUrl: "https://picsum.photos/800/1200?random=7",
-       title: "Travel Insurance",
+      image: require("../../assets/images/Mobility-Guide.jpg"),
+       title: "Mobility Guide",
     },
     {
-       imgUrl: "https://picsum.photos/800/1200?random=9",
-       title: "Forex",
+      image: require("../../assets/images/Personal-Assistant.jpg"),
+       title: "Persoanl Assistant",
     },
     {
-       imgUrl: "https://picsum.photos/800/1200?random=11",
-       title: "HomeStays & Villas",
+      src: require("../../assets/images/Closed-Caption.jpg") ,
+       title: "something",
     },
  ];
  

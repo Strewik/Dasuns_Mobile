@@ -2,6 +2,8 @@ import { Tabs } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Layout() {
   return (
@@ -28,9 +30,13 @@ export default function Layout() {
           headerShown: false,
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <Ionicons name="people" size={24} color="black" />
+              <MaterialIcons name="dashboard" size={24} color="black" />
             ) : (
-              <Ionicons name="people-outline" size={24} color="black" />
+              <MaterialCommunityIcons
+                name="view-dashboard-outline"
+                size={24}
+                color="black"
+              />
             ),
         }}
       />
@@ -56,9 +62,9 @@ export default function Layout() {
           headerShown: false,
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <AntDesign name="plussquare" size={24} color="black" />
+              <Ionicons name="person-sharp" size={24} color="black" />
             ) : (
-              <AntDesign name="plussquareo" size={24} color="black" />
+              <Ionicons name="person-outline" size={24} color="black" />
             ),
         }}
       />
