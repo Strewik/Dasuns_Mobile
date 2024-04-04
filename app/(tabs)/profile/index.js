@@ -407,7 +407,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   signout: {
-    textAlign: "right",
+    flexDirection: "row",
+    alignContent: "right",
   },
 });
 

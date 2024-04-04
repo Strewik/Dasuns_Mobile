@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import RequestService from '../../components/RequestService';
 import SPWallet from '../../components/SPWallet';
 import RecommendSP from '../../components/RecommendSP';
@@ -20,6 +20,7 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
+      <Text>dashbord</Text>
       <View style={styles.container}>
         <SPWallet />
         <AppointmentsMin />
@@ -29,12 +30,12 @@ const DashboardScreen = () => {
         <Rating onPress={handleRatingPress} />
       </View>
       <View style={styles.container}>
-        <ServiceMonth />
-        <ServiceBar />
+        {/* <ServiceMonth /> */}
+        {/* <ServiceBar /> */}
       </View>
       <View style={styles.container}>
-        <ActivityMin />
-        <AverageRating averageRating={averageRating} />
+        {/* <ActivityMin /> */}
+        {/* <AverageRating averageRating={averageRating} /> */}
       </View>
     </ScrollView>
   );
