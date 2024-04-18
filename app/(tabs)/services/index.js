@@ -65,6 +65,7 @@ const ServicesScreen = () => {
       image: require("../../../assets/images/Mobility-Guide.jpg"),
       title: "Tactile",
       modalContent: "Content for Tactile",
+
     },
   ];
 
@@ -87,7 +88,7 @@ const ServicesScreen = () => {
                     style={styles.button}
                     onPress={() => handleRequestService(service.id)}
                   >
-                    <Text style={styles.buttonText}>Request Service </Text>
+                    <Text style={styles.buttonText}>Book Service </Text>
                   </TouchableOpacity>
                 </View>
               </View>

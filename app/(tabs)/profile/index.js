@@ -347,7 +347,6 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   content: {
-    // flex: 3,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -407,8 +406,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   signout: {
+    flex: 1,
     flexDirection: "row",
-    alignContent: "right",
+    justifyContent: "flex-end",
   },
 });
 

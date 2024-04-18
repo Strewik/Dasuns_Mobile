@@ -1,68 +1,63 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import ServicePieChart from './ServicePieChart';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import ServicePieChart from "./ServicePieChart";
 
 const ServiceMonth = (props) => {
-    return (
-        <TouchableOpacity style={styles.card}>
-            <View>
-                <Text style={styles.text}>
-                    All services
-                </Text>
-            </View>
+  return (
+    <View style={styles.card}>
+      <View>
+        <Text style={styles.text}>All services</Text>
+      </View>
 
-            <View style={styles.container}>
-                <View style={[styles.column, { flex: 1 }]}>
-                    <ServicePieChart />
-                </View>
-            </View>
-        </TouchableOpacity>
-    );
+      <View style={styles.container}>
+        <View style={[styles.column, { flex: 1 }]}>
+          <ServicePieChart />
+        </View>
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    card: {
-        backgroundColor: '#fff',
-        padding: 8,
-        borderRadius: 10,
-        marginLeft: 16,
-        marginBottom: 16,
-        marginRight: 16,
-        marginTop: 8,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 4,
-    },
-    text: {
-        fontSize: 16,
-        color: '#000',
-        fontWeight: 'bold',
-        opacity: 0.6,
-    },
-    image: {
-        width: 50,
-        height: 50,
-        borderRadius: 8,
-    },
-    container: {
-        flexDirection: 'row', // Arrange columns horizontally
-        padding: 8,
-    },
-    column: {
-        padding: 8,
-    },
-    columnText: {
-        color: '#ffffff',
-        fontSize: 16,
-    },
+  card: {
+    backgroundColor: "#fff",
+    padding: 8,
+    borderRadius: 10,
+    marginLeft: 16,
+    marginBottom: 16,
+    marginRight: 16,
+    marginTop: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  text: {
+    fontSize: 16,
+    color: "#000",
+    fontWeight: "bold",
+    opacity: 0.6,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 8,
+  },
+  container: {
+    flexDirection: "row", // Arrange columns horizontally
+    padding: 8,
+  },
+  column: {
+    padding: 8,
+  },
+  columnText: {
+    color: "#ffffff",
+    fontSize: 16,
+  },
 });
 
 export default ServiceMonth;
-
-
-
 
 // import React from 'react';
 // import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
@@ -85,10 +80,7 @@ export default ServiceMonth;
 
 //             </View>
 
-
 //         </TouchableOpacity>
-
-
 
 //     );
 // };
@@ -123,7 +115,7 @@ export default ServiceMonth;
 //     image: {
 //         width: 50,
 //         height: 50,
-//         // resizeMode: 'cover', 
+//         // resizeMode: 'cover',
 //         borderRadius: 8,
 //     },
 //     container: {
@@ -140,6 +132,5 @@ export default ServiceMonth;
 //         fontSize: 16,
 //     },
 // });
-
 
 // export default ServiceMonth;

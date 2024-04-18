@@ -61,7 +61,7 @@ const ColoredDotList = () => {
             <View style={styles.bit}>
                 <View style={[styles.coloredDot, { backgroundColor: item.color }]} />
                 <View ><Text style={styles.title}>{item.title}</Text></View></View>
-            <View style={styles.element}><Text style={styles.text}>{item.Desc}</Text>
+                <View style={styles.element}><Text style={styles.text}>{item.Desc}</Text>
                 <Text style={styles.text}>{item.time}</Text></View>
         </View>
     );

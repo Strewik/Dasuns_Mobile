@@ -19,18 +19,27 @@ import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { Ionicons } from "@expo/vector-icons";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { Picker } from "@react-native-picker/picker";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [gender, setGender] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [joinReason, setJoinReason] = useState("");
+  const [telephone, setTelephone] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
   const router = useRouter();
   const handleRegister = () => {
     console.log("hello");
     const user = {
-      name: name,
+      firstname: firstname,
       email: email,
       password: password,
       profileImage: profileImage,
@@ -57,7 +66,18 @@ const Register = () => {
         console.log("registration failed", error);
       });
   };
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
 
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleDateConfirm = (date) => {
+    setSelectedDate(date.toLocaleDateString());
+    hideDatePicker();
+  };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -71,6 +91,101 @@ const Register = () => {
         </View>
         <Animatable.View animation="fadeInUpBig" style={styles.footer}>
           <ScrollView>
+            {/* <Text style={styles.text_footer}>First name</Text> */}
+            <View style={styles.action}>
+              <FontAwesome name="user-o" color="#05375a" size={20} />
+              <TextInput
+                placeholder="First name"
+                style={styles.textInput}
+                autoCapitalize="none"
+                onChangeText={(text) => setFirstname(text)}
+              />
+              {firstname.check_textInputChange ? (
+                <Animatable.View animation="bounceIn">
+                  <Feather name="check-circle" color="green" size={20} />
+                </Animatable.View>
+              ) : null}
+            </View>
+            {/* <Text style={styles.text_footer}>Last name</Text> */}
+            <View style={styles.action}>
+              <FontAwesome name="user-o" color="#05375a" size={20} />
+              <TextInput
+                placeholder="Last name"
+                style={styles.textInput}
+                autoCapitalize="none"
+                onChangeText={(text) => setLastname(text)}
+              />
+              {lastname.check_textInputChange ? (
+                <Animatable.View animation="bounceIn">
+                  <Feather name="check-circle" color="green" size={20} />
+                </Animatable.View>
+              ) : null}
+            </View>
+            
+            {/* <Text style={styles.textInput}>Gender:</Text> */}
+            <FontAwesome name="user-o" color="#05375a" size={20} />
+            <Picker
+              selectedValue={gender}
+              style={styles.textInput}
+              onValueChange={(itemValue) => setGender(itemValue)}
+            >
+              <Picker.Item label="Select Gender" value="" />
+              <Picker.Item label="Male" value="male" />
+              <Picker.Item label="Female" value="female" />
+            </Picker>
+            <Text style={styles.text_footer}>Date: </Text>
+                <View style={styles.action}>
+                  <FontAwesome name="user-o" color="#05375a" size={20} />
+                  <View>
+                    <TouchableOpacity
+                      onPress={showDatePicker}
+                      style={styles.textInput}
+                    >
+                      <Text>{selectedDate || "Select Date"}</Text>
+                    </TouchableOpacity>
+                    <DateTimePickerModal
+                      isVisible={isDatePickerVisible}
+                      mode="date"
+                      onConfirm={handleDateConfirm}
+                      onCancel={hideDatePicker}
+                    />
+                  </View>
+                  {selectedDate.check_textInputChange ? (
+                    <Animatable.View animation="bounceIn">
+                      <Feather name="check-circle" color="green" size={20} />
+                    </Animatable.View>
+                  ) : null}
+                </View>
+            {/* <Text style={styles.textInput}>Reason for Joining:</Text> */}
+            <FontAwesome name="user-o" color="#05375a" size={20} />
+            <Picker
+              selectedValue={joinReason}
+              style={styles.textInput}
+              onValueChange={(itemValue) => setReason(itemValue)}
+            >
+              <Picker.Item label="Select Reason" value="" />
+              <Picker.Item label="To Use Services" value="useServices" />
+              <Picker.Item
+                label="To Provide Services"
+                value="provideServices"
+              />
+            </Picker>
+
+            <Text style={styles.text_footer}>Telephone number</Text>
+            <View style={styles.action}>
+              <FontAwesome name="user-o" color="#05375a" size={20} />
+              <TextInput
+                placeholder="Telephone number"
+                style={styles.textInput}
+                autoCapitalize="none"
+                onChangeText={(text) => setTelephone(text)}
+              />
+              {telephone.check_textInputChange ? (
+                <Animatable.View animation="bounceIn">
+                  <Feather name="check-circle" color="green" size={20} />
+                </Animatable.View>
+              ) : null}
+            </View>
             <Text style={styles.text_footer}>Email</Text>
             <View style={styles.action}>
               <FontAwesome name="user-o" color="#05375a" size={20} />
@@ -117,37 +232,6 @@ const Register = () => {
                   color="black"
                 />
               </TouchableOpacity>
-            </View>
-            <Text style={styles.text_footer}>Name</Text>
-            <View style={styles.action}>
-              <FontAwesome name="user-o" color="#05375a" size={20} />
-              <TextInput
-                placeholder="Your name"
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={(text) => setName(text)}
-              />
-              {name.check_textInputChange ? (
-                <Animatable.View animation="bounceIn">
-                  <Feather name="check-circle" color="green" size={20} />
-                </Animatable.View>
-              ) : null}
-            </View>
-
-            <Text style={styles.text_footer}>Image url</Text>
-            <View style={styles.action}>
-              <FontAwesome name="user-o" color="#05375a" size={20} />
-              <TextInput
-                placeholder="Image url"
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={(text) => setProfileImage(text)}
-              />
-              {name.check_textInputChange ? (
-                <Animatable.View animation="bounceIn">
-                  <Feather name="check-circle" color="green" size={20} />
-                </Animatable.View>
-              ) : null}
             </View>
 
             <View style={styles.textPrivate}>

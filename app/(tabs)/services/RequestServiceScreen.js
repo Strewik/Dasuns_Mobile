@@ -152,7 +152,7 @@ const Register = () => {
                       onCancel={hideDatePicker}
                     />
                   </View>
-                  {location.check_textInputChange ? (
+                  {selectedDate.check_textInputChange ? (
                     <Animatable.View animation="bounceIn">
                       <Feather name="check-circle" color="green" size={20} />
                     </Animatable.View>
@@ -175,7 +175,7 @@ const Register = () => {
                       onCancel={hideTimePicker}
                     />
                   </View>
-                  {location.check_textInputChange ? (
+                  {selectedTime.check_textInputChange ? (
                     <Animatable.View animation="bounceIn">
                       <Feather name="check-circle" color="green" size={20} />
                     </Animatable.View>

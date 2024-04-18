@@ -19,7 +19,7 @@ const StarRating = ({ rating, onRatingPress }) => {
           <Icon
             name={selectedRating >= i ? 'star' : 'star-outline'}
             size={25}
-            color="#FFD700" // You can adjust the color as needed
+            color="#FFD700" 
           />
         </TouchableOpacity>
       );
