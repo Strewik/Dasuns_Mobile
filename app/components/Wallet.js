@@ -6,36 +6,36 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-
+import { useRouter } from "expo-router";
 const Wallet = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.card}>
-      <TouchableOpacity onPress={() => navigation.navigate("Trasactions")}>
+      <TouchableOpacity onPress={() => router.push("/#")}>
+      <View onPress={() => navigation.navigate("Trasactions")}>
         <Text style={styles.secondaryText} className=" text-center mt-2">
           Wallet balance
         </Text>
-      </TouchableOpacity>
+      </View>
       <View>
         <Text
           style={styles.greenHeader}
-          className="text-[#37bea7] font-bold tracking-wider text-3xl text-center mt-5"
         >
           UGX 125,000
         </Text>
       </View>
       <View>
         <View style={styles.cardMinor}>
-          <TouchableOpacity style={styles.column}>
+          <View style={styles.column}>
             <Text style={styles.secondaryText}>Deposit </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.column}>
+          </View>
+          <View style={styles.column}>
             <Text style={styles.secondaryText}>Withdraw </Text>
-          </TouchableOpacity>
+          </View>
         </View>
       </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     opacity: 0.4,
     justifyContent: "center",
-    alignItems: "center",
+    textAlign: "center",
   },
   greenHeader: {
     color: "#37BEA7",
     fontSize: 24,
     fontWeight: "bold",
-    alignItems: "center",
+    textAlign: "center",
   },
   cardMinor: {
     backgroundColor: "white",

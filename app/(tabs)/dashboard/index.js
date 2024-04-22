@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   Button,
+  Link
 } from "react-native";
 import { useRouter } from "expo-router";
 // import {AuthContext} from '../context/AuthContext';
@@ -51,7 +52,7 @@ const DashboardScreen = () => {
           <View>
             <TouchableOpacity
               style={styles.card}
-              onPress={() => router.push("/(tabs)/services")}
+              // onPress={() => router.push("/services")}
             >
               <RequestService />
             </TouchableOpacity>

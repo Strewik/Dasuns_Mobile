@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React from 'react'
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from "expo-router";
 
 import ServiceCarousel from "../../components/ServiceCarousel";
 import Wallet from "../../components/Wallet";
@@ -9,7 +9,8 @@ import TwoCols from "../../components/TwoCols";
 import AboutDasuns from "../../components/AboutDasuns";
 
 const HomeScreen = () => {
-    const navigation = useNavigation();
+    const router = useRouter();
+    
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -21,7 +22,7 @@ const HomeScreen = () => {
                     <ServiceCarousel />
                 </View>
                 <View style={styles.btnContainer}>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Services')}>
+                    <TouchableOpacity style={styles.button} onPress={() => router.push("/services")}>
                         <Text style={styles.buttonText}>Request Service </Text>
                     </TouchableOpacity>
                 </View>
