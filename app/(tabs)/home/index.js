@@ -14,10 +14,6 @@ const HomeScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
-                <View style={{ paddingHorizontal: 16, }}>
-                    {/* <Text className="text-[#37bea7] font-bold tracking-wider text-2xl">Welcome to Dasuns</Text> */}
-                    <Text style={styles.secondaryText} >Select an option to get started</Text>
-                </View>
                 <View>
                     <ServiceCarousel />
                 </View>
@@ -43,7 +39,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: StatusBar.currentHeight,
+        // marginTop: StatusBar.currentHeight,
 
     },
     secondaryText: {

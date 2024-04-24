@@ -1,11 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
+
 
 const AboutDasuns = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("BlogList")}>
+    <TouchableOpacity onPress={() => router.push("/(screens)/blogList")}>
       <View style={styles.card}>
         <View>
           <Image

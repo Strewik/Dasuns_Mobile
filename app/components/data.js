@@ -20,31 +20,9 @@ export const views1 = [
        title: "Persoanl Assistant",
     },
     {
-      src: require("../../assets/images/Closed-Caption.jpg") ,
+      src: require("../../assets/images//signLanguage.jpg") ,
        title: "something",
     },
  ];
  
- export const views2 = [
-    {
-       imgUrl: "https://picsum.photos/800/1200?random=13",
-       verified: true,
-    },
-    {
-       imgUrl: "https://picsum.photos/800/1200?random=15",
-       verified: false,
-    },
-    {
-       imgUrl: "https://picsum.photos/800/1200?random=17",
-       verified: true,
-    },
-    {
-       imgUrl: "https://picsum.photos/800/1200?random=19",
-       verified: false,
-    },
-    {
-       imgUrl: "https://picsum.photos/800/1200?random=21",
-       verified: false,
-    },
- ];
  

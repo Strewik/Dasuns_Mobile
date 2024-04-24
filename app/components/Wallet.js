@@ -12,7 +12,7 @@ const Wallet = () => {
 
   return (
     <SafeAreaView style={styles.card}>
-      <TouchableOpacity onPress={() => router.push("/#")}>
+      <TouchableOpacity onPress={() => router.push("/(screens)/")}>
       <View onPress={() => navigation.navigate("Trasactions")}>
         <Text style={styles.secondaryText} className=" text-center mt-2">
           Wallet balance

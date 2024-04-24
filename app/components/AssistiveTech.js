@@ -1,16 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useRouter } from "expo-router";
 
 
 const AssistiveTech = () => {
-    const navigation = useNavigation();
-
-    // const navigation = useNavigation();
+    const router = useRouter();
 
     return (
 
-        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('UserAppointments')}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/(screens)/activityDetails")}>
             <View style={styles.imageView}>
                 <Image
                     source={require("../../assets/images/activity1.png")}
