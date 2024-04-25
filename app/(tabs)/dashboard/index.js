@@ -7,7 +7,8 @@ import {
   Image,
   ScrollView,
   Button,
-  Link
+  Link,
+  Pressable,
 } from "react-native";
 import { useRouter } from "expo-router";
 // import {AuthContext} from '../context/AuthContext';
@@ -43,33 +44,38 @@ const DashboardScreen = () => {
       <View style={styles.container}>
         <View style={styles.column}>
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/(screens)/WalletDetails")}
+            >
               <DashWallet />
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.column}>
           <View>
-            <TouchableOpacity
+            <Pressable
               style={styles.card}
-              // onPress={() => router.push("/services")}
+              onPress={() => router.push("/services")}
             >
               <RequestService />
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View>
             <RecommendSP />
           </View>
         </View>
       </View>
-      <View style={styles.container}>
+      <Pressable
+        onPress={() => router.push("/(screens)/appointmentDetails")}
+        style={styles.container}
+      >
         <View style={styles.column}>
           <AppointmentsMin />
         </View>
         <View style={styles.column}>
           <Rating />
         </View>
-      </View>
+      </Pressable>
       <View style={{ flex: 1, justifyContent: "center" }}>
         <ServiceBar />
       </View>

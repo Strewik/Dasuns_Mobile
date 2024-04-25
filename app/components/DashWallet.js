@@ -16,12 +16,12 @@ const DashWallet = () => {
 
         <View style={styles.column}>
           <View style={styles.cardMinor}>
-            <TouchableOpacity style={styles.columnMinor}>
+            <View style={styles.columnMinor}>
               <Text style={styles.secondaryText}>Deposit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.columnMinor}>
+            </View>
+            <View style={styles.columnMinor}>
               <Text style={styles.secondaryText}>Withdraw</Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

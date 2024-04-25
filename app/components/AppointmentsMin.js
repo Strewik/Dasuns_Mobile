@@ -8,14 +8,14 @@ const AppointmentsMin = () => {
                 <Text style={styles.secondaryText}>Appointments</Text>
             </View>
             <View style={styles.cardMinor}>
-                <TouchableOpacity style={styles.column}>
+                <View style={styles.column}>
                     <Text style={styles.secondaryText}>Next Appointment</Text>
                     <Text style={styles.text}>10th Jan 2024</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.column}>
+                </View>
+                <View style={styles.column}>
                     <Text style={styles.secondaryText}>History</Text>
                     <Text style={styles.text}>3 Entries</Text>
-                </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

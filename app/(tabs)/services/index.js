@@ -19,19 +19,11 @@ const ServicesScreen = () => {
     console.log(`Requested service`);
   };
 
-  const [modalVisible, setModalVisible] = useState({});
 
-  const openModal = (id) => {
-    setModalVisible({ ...modalVisible, [id]: true });
-  };
-  const closeModal = (id) => {
-    setModalVisible({ ...modalVisible, [id]: false });
-  };
 
   const services = [
     {
       id: "personalAssistance",
-      // image: "./Personal-Assistant.jpg",
       image: require("./Personal-Assistant.jpg"),
       title: "Personal Assistance",
       modalContent: "Content for Personal Assistance",
@@ -65,22 +57,33 @@ const ServicesScreen = () => {
       image: require("../../../assets/images/Mobility-Guide.jpg"),
       title: "Tactile",
       modalContent: "Content for Tactile",
-
     },
   ];
 
+  const [modalVisible, setModalVisible] = useState(Array(services.length).fill(false));
+
+  const openModal = (index) => {
+    const newModalVisible = [...modalVisible];
+    newModalVisible[index] = true;
+    setModalVisible(newModalVisible);
+  };
+
+  const closeModal = (index) => {
+    const newModalVisible = [...modalVisible];
+    newModalVisible[index] = false;
+    setModalVisible(newModalVisible);
+  };
+  
   return (
     <ScrollView>
-      <Text>ServicesScreen</Text>
       <View style={styles.container}>
-        {services.map((service) => (
+        {services.map((service, index) => (
           <View key={service.id} style={styles.column}>
             <View style={styles.card}>
-              {/* <Image source={{ uri: service.image }} style={styles.cardImage} /> */}
               <Image source={service.image} style={styles.cardImage} />
               <View style={styles.body}>
                 <Text style={styles.header}>{service.title}</Text>
-                <TouchableOpacity onPress={() => openModal(service.id)}>
+                <TouchableOpacity onPress={() => openModal(index)}>
                   <Text style={styles.readMoreLink}> Read More </Text>
                 </TouchableOpacity>
                 <View style={styles.btnContainer}>
@@ -95,15 +98,15 @@ const ServicesScreen = () => {
               <Modal
                 transparent={true}
                 animationType="slide"
-                visible={modalVisible[service.id]}
-                onRequestClose={() => closeModal(service.id)}
+                visible={modalVisible[index]}
+                onRequestClose={() => closeModal(index)}
               >
                 <View style={styles.modalContainer}>
                   <View style={styles.modalContent}>
                     <Text>{service.modalContent}</Text>
                     <Button
                       title="Close"
-                      onPress={() => closeModal(service.id)}
+                      onPress={() => closeModal(index)}
                     />
                   </View>
                 </View>
@@ -117,6 +120,163 @@ const ServicesScreen = () => {
 };
 
 export default ServicesScreen;
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flexDirection: 'row',
+//     flexWrap: 'wrap',
+//     justifyContent: 'space-around',
+//     paddingHorizontal: 10,
+//   },
+//   card: {
+//     backgroundColor: '#fff',
+//     borderRadius: 10,
+//     marginVertical: 10,
+//     shadowColor: '#000',
+//     shadowOffset: {
+//       width: 0,
+//       height: 2,
+//     },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
+//     elevation: 5,
+//   },
+//   cardImage: {
+//     width: 150,
+//     height: 150,
+//     borderTopLeftRadius: 10,
+//     borderTopRightRadius: 10,
+//     resizeMode: 'cover',
+//   },
+//   body: {
+//     padding: 10,
+//   },
+//   header: {
+//     fontSize: 18,
+//     fontWeight: 'bold',
+//     marginBottom: 5,
+
+
+
+
+
+// import React, { useState } from "react";
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+//   Image,
+//   TouchableOpacity,
+//   Button,
+//   ScrollView,
+//   Modal,
+// } from "react-native";
+// import { useRouter } from "expo-router";
+
+// const ServicesScreen = () => {
+//   const router = useRouter();
+
+//   const handleRequestService = (service) => {
+//     router.push(`/services/RequestServiceScreen`, { params: { service } });
+//     console.log(`Requested service`);
+//   };
+
+//   const [modalVisible, setModalVisible] = useState({});
+
+//   const openModal = (id) => {
+//     setModalVisible({ ...modalVisible, [id]: true });
+//   };
+//   const closeModal = (id) => {
+//     setModalVisible({ ...modalVisible, [id]: false });
+//   };
+
+//   const services = [
+//     {
+//       id: "personalAssistance",
+//       // image: "./Personal-Assistant.jpg",
+//       image: require("./Personal-Assistant.jpg"),
+//       title: "Personal Assistance",
+//       modalContent: "Content for Personal Assistance",
+//     },
+//     {
+//       id: "captioning",
+//       image: require("../../../assets/images/Closed-Caption.jpg"),
+//       title: "Captioning",
+//       modalContent: "Content for Captioning",
+//     },
+//     {
+//       id: "localSign",
+//       image: require("../../../assets/images/signLanguage.jpg"),
+//       title: "Local sign language",
+//       modalContent: "Content for local sign language",
+//     },
+//     {
+//       id: "internationalSign",
+//       image: require("../../../assets/images/International-signLanguage.jpg"),
+//       title: "International sign language",
+//       modalContent: "Content for International sign language",
+//     },
+//     {
+//       id: "mobilityGuide",
+//       image: require("../../../assets/images/Mobility-Guide.jpg"),
+//       title: "Mobility guide",
+//       modalContent: "Content for mobility guide",
+//     },
+//     {
+//       id: "Tactile",
+//       image: require("../../../assets/images/Mobility-Guide.jpg"),
+//       title: "Tactile",
+//       modalContent: "Content for Tactile",
+//     },
+//   ];
+
+//   return (
+//     <ScrollView>
+//       <View style={styles.container}>
+//         {services.map((service) => (
+//           <View key={service.id} style={styles.column}>
+//             <View style={styles.card}>
+//               {/* <Image source={{ uri: service.image }} style={styles.cardImage} /> */}
+//               <Image source={service.image} style={styles.cardImage} />
+//               <View style={styles.body}>
+//                 <Text style={styles.header}>{service.title}</Text>
+//                 <TouchableOpacity onPress={() => openModal(service.id)}>
+//                   <Text style={styles.readMoreLink}> Read More </Text>
+//                 </TouchableOpacity>
+//                 <View style={styles.btnContainer}>
+//                   <TouchableOpacity
+//                     style={styles.button}
+//                     onPress={() => handleRequestService(service.id)}
+//                   >
+//                     <Text style={styles.buttonText}>Book Service </Text>
+//                   </TouchableOpacity>
+//                 </View>
+//               </View>
+//               <Modal
+//                 transparent={true}
+//                 animationType="slide"
+//                 visible={modalVisible[service.id]}
+//                 onRequestClose={() => closeModal(service.id)}
+//               >
+//                 <View style={styles.modalContainer}>
+//                   <View style={styles.modalContent}>
+//                     <Text>{service.modalContent}</Text>
+//                     <Button
+//                       title="Close"
+//                       onPress={() => closeModal(service.id)}
+//                     />
+//                   </View>
+//                 </View>
+//               </Modal>
+//             </View>
+//           </View>
+//         ))}
+//       </View>
+//     </ScrollView>
+//   );
+// };
+
+// export default ServicesScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -132,7 +292,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
     // padding: 8,
-    borderRadius: 20,
+    borderRadius: 10,
     marginLeft: 8,
     marginTop: 8,
     // Shadow properties for iOS
@@ -152,10 +312,10 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
   },
   body: {
-    paddingHorizontal: 8,
+    paddingBottom: 10,
     marginTop: -16,
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderRadius: 10,
     marginHorizontal: 5,
     paddingVertical: 20,
     flex: 1,

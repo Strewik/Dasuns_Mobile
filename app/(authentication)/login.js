@@ -192,7 +192,7 @@ const Login = () => {
                 // onPress={() => {
                 //   handleLogin(email, password);
                 // }}
-                onPress={() => router.push("/(tabs)/home")}
+                onPress={() => router.replace("/(tabs)/home")}
               >
                 <LinearGradient
                   colors={["#08d4c4", "#01ab9d"]}
