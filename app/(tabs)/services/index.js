@@ -8,18 +8,12 @@ import {
   Button,
   ScrollView,
   Modal,
+  Pressable,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter, useLocalSearchParams, Link } from "expo-router";
 
 const ServicesScreen = () => {
   const router = useRouter();
-
-  const handleRequestService = (service) => {
-    router.push(`/services/RequestServiceScreen`, { params: { service } });
-    console.log(`Requested service`);
-  };
-
-
 
   const services = [
     {
@@ -73,7 +67,8 @@ const ServicesScreen = () => {
     newModalVisible[index] = false;
     setModalVisible(newModalVisible);
   };
-  
+
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -86,13 +81,16 @@ const ServicesScreen = () => {
                 <TouchableOpacity onPress={() => openModal(index)}>
                   <Text style={styles.readMoreLink}> Read More </Text>
                 </TouchableOpacity>
-                <View style={styles.btnContainer}>
-                  <TouchableOpacity
+                <View style={styles.btnContainer} >
+                  {/* <Link href={{ pathname:"/services/RequestServiceScreen", params:{id:service.id, service:service.title}}}> */}
+                  <Pressable
                     style={styles.button}
-                    onPress={() => handleRequestService(service.id)}
-                  >
+                    onPress={() => {
+                      router.push({ pathname: "services/RequestServiceScreen", params: { id:service.id, title:service.title } });
+                    }}>
                     <Text style={styles.buttonText}>Book Service </Text>
-                  </TouchableOpacity>
+                  </Pressable>
+                  {/* </Link> */}
                 </View>
               </View>
               <Modal

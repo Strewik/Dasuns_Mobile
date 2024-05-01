@@ -11,8 +11,12 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useRouter,  } from "expo-router";
 
 const App = () => {
+
+  const router = useRouter();
+
   let isServiceProvider = true;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = () => {
@@ -324,6 +328,13 @@ const App = () => {
                   )}
                 </>
               )}
+
+              <View>
+                <TouchableOpacity onPress={() => router.push("/profile/CompleteSPProfile")}>
+                  <Text>Complete SP Profile</Text>
+                </TouchableOpacity>
+              </View>
+
               <View style={styles.signout}>
                 <Text>Sign Out</Text>
               </View>

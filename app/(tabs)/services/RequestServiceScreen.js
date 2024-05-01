@@ -12,7 +12,7 @@ import {
   StatusBar,
   Alert,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 import axios from "axios";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
@@ -22,11 +22,20 @@ import { Ionicons } from "@expo/vector-icons";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Picker } from "@react-native-picker/picker";
 
-const Register = () => {
+const Register = (route) => {
+  const router = useRouter();
+  const navigation = useNavigation();
+  const params = useLocalSearchParams();
+
+
   const [step, setStep] = useState(1);
 
   const [location, setLocation] = useState("");
-  const [service, setService] = useState("");
+  const [service, setService] = useState();
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
 
   const handleNextStep = () => {
     if (step === 1) {
@@ -43,10 +52,7 @@ const Register = () => {
     // Handle form submission
   };
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
+
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -74,7 +80,7 @@ const Register = () => {
     hideTimePicker();
   };
 
-  const textInputChange = (val) => {
+  const locationChange = (val) => {
     if (val.length !== 0) {
       setLocation({
         location: val,
@@ -87,6 +93,19 @@ const Register = () => {
       });
     }
   };
+  // const serviceChange = (val) => {
+  //   if (val.length !== 0) {
+  //     setService({
+  //       location: val,
+  //       check_textInputChange: true,
+  //     });
+  //   } else {
+  //     setService({
+  //       location: val,
+  //       check_textInputChange: false,
+  //     });
+  //   }
+  // };
 
   const [selectedServiceProvider, setSelectedServiceProvider] = useState(null);
 
@@ -109,6 +128,8 @@ const Register = () => {
     // Add more service providers as needed
   ];
 
+  let {id, title} = params
+
   return (
     <View>
       <View style={styles.container}>
@@ -120,14 +141,30 @@ const Register = () => {
             </View>
             <Animatable.View animation="fadeInUpBig" style={styles.footer}>
               <ScrollView>
+                <Text style={styles.text_footer}>Service</Text>
+                <View style={styles.action}>
+                  <FontAwesome name="user-o" color="#05375a" size={20} />
+                  <TextInput
+                    placeholder={title}
+                    value={title}
+                    style={styles.textInput}
+                    // autoCapitalize="none"
+                    onChangeText={(val) => serviceChange(val)}
+                  />
+                  {location.check_textInputChange ? (
+                    <Animatable.View animation="bounceIn">
+                      <Feather name="check-circle" color="green" size={20} />
+                    </Animatable.View>
+                  ) : null}
+                </View>
                 <Text style={styles.text_footer}>Location</Text>
                 <View style={styles.action}>
                   <FontAwesome name="user-o" color="#05375a" size={20} />
                   <TextInput
                     placeholder="Location"
                     style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
+                    // autoCapitalize="none"
+                    onChangeText={(val) => locationChange(val)}
                   />
                   {location.check_textInputChange ? (
                     <Animatable.View animation="bounceIn">
@@ -233,9 +270,7 @@ const Register = () => {
         {step === 2 && (
           <View>
             <StatusBar backgroundColor="#009387" barStyle="light-content" />
-            <View style={styles.header}>
-              <Text style={styles.text_header}>Register Now now!</Text>
-            </View>
+           
             <Animatable.View animation="fadeInUpBig" style={styles.footer}>
               <ScrollView>
                 <View>
@@ -292,7 +327,7 @@ const Register = () => {
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    onPress={() => router.push("/login")}
+                    onPress={() => router.push("/index")}
                     style={[
                       styles.signIn,
                       {
