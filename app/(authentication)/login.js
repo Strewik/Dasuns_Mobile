@@ -15,8 +15,6 @@ import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,49 +25,44 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isValidPassword, setisValidPassword] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
 
   const router = useRouter();
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem("authToken");
-        if (token) {
-          router.replace("/(tabs)/home");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    checkLoginStatus();
-  }, []);
   const handleLogin = () => {
-    const user = {
-      email: email,
-      password: password,
-    };
+    // Validate fields
+    let isValid = true;
 
-    const handlePasswordChange = (val) => {
-      if (val.trim().length >= 8) {
-        setData({
-          password: val,
-          isValidPassword: true,
-        });
-      } else {
-        setData({
-          password: val,
-          isValidPassword: false,
-        });
-      }
-    };
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    axios.post("http://localhost:3000/login", user).then((response) => {
-      console.log(response);
-      const token = response.data.token;
-      AsyncStorage.setItem("authToken", token);
-      router.replace("/(tabs)/home");
-    });
+    if (!email || !emailPattern.test(email)) {
+      isValid = false;
+      setEmailError("Enter a valid email address");
+    } else {
+      setEmailError(null);
+    }
+
+    if (!password) {
+      isValid = false;
+      setPasswordError("Password is required");
+    } else {
+      setPasswordError(null);
+    }
+
+    if (isValid) {
+      const user = {
+        email: email,
+        password: password,
+      };
+
+      // axios.post("http://localhost:3000/login", user).then((response) => {
+      //   console.log(response);
+      //   const token = response.data.token;
+      //   AsyncStorage.setItem("authToken", token);
+        router.replace("/(tabs)/home");
+      // });
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -126,14 +119,9 @@ const Login = () => {
                 ]}
                 autoCapitalize="none"
                 onChangeText={(text) => setEmail(text)}
-                // onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
               />
-              {email.check_textInputChange ? (
-                <Animatable.View animation="bounceIn">
-                  <Feather name="check-circle" color="green" size={20} />
-                </Animatable.View>
-              ) : null}
             </View>
+            {emailError && <Text style={styles.errorMsg}>{emailError}</Text>}
 
             <Text
               style={[
@@ -173,12 +161,8 @@ const Login = () => {
                 />
               </TouchableOpacity>
             </View>
-            {password.isValidPassword ? null : (
-              <Animatable.View animation="fadeInLeft" duration={500}>
-                <Text style={styles.errorMsg}>
-                  Password must be 8 characters long.
-                </Text>
-              </Animatable.View>
+            {passwordError && (
+              <Text style={styles.errorMsg}>{passwordError}</Text>
             )}
 
             <TouchableOpacity>
@@ -187,12 +171,9 @@ const Login = () => {
               </Text>
             </TouchableOpacity>
             <View style={styles.button}>
-              <TouchableOpacity
-                style={styles.signIn}
-                // onPress={() => {
-                //   handleLogin(email, password);
-                // }}
-                onPress={() => router.replace("/(tabs)/home")}
+              <TouchableOpacity style={styles.signIn} 
+              onPress={handleLogin}
+              // onPress={() => router.replace("/(tabs)/home")}
               >
                 <LinearGradient
                   colors={["#08d4c4", "#01ab9d"]}
@@ -309,5 +290,9 @@ const styles = StyleSheet.create({
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  errorMsg: {
+    color: "#FF0000",
+    fontSize: 14,
   },
 });
