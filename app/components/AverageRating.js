@@ -3,21 +3,21 @@ import { View, Text, StyleSheet } from 'react-native';
 import AverageStarRating from './AverageStarRating';
 
 const App = () => {
-    const averageRating = 3.0; // Replace with your actual average rating
+    const averageRating = 3.0; // Replace with your actual average rating from db
     const numberRatitings = 12
     return (
         <View style={styles.card}>
             <View>
-                <Text style={styles.secondaryText} className="mt-2">Ratings</Text>
+                <Text style={styles.secondaryText} >Ratings</Text>
             </View>
             <View>
-                <Text style={styles.greenHeader} className="text-[#37bea7] font-bold tracking-wider text-4xl text-center mt-3 mb-3">
+                <Text style={styles.greenHeader}>
                     {averageRating}
                 </Text>
             </View>
             <AverageStarRating averageRating={averageRating} />
             <View>
-                <Text className="mt-1 text-center mb-4 font-bold ">
+                <Text style={styles.secondaryText}>
                     {numberRatitings} ratings
                 </Text>
             </View>
@@ -28,11 +28,9 @@ const App = () => {
 const styles = StyleSheet.create({
     card: {
         backgroundColor: 'white',
-        padding: 8,
-        paddingBottom: 0,
+        padding: 16,
         borderRadius: 10,
-        // marginLeft: 16,
-        marginTop: 8,
+        marginVertical: 16,
         marginRight: 8,
         // Shadow properties for iOS
         shadowColor: '#000',
@@ -44,15 +42,18 @@ const styles = StyleSheet.create({
     },
     secondaryText: {
         fontSize: 16,
-        color: '#000',
-        fontWeight: 'bold',
-        opacity: 0.6,
-        justifyContent: 'center',
-        alignItems: 'center',
+        color: "#000",
+        fontWeight: "bold",
+        opacity: 0.4,
+        textAlign: "center",
     },
     greenHeader: {
-
-    },
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#37bea7",
+        textAlign: "center",
+        marginVertical: 10,
+      },
     cardMinor: {
         backgroundColor: 'white',
         borderRadius: 8,

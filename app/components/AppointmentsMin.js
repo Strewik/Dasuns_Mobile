@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 8,
         borderRadius: 10,
-        marginLeft: 16,
-        marginTop: 8,
+        // marginLeft: 16,
+        marginTop: 16,
         // Shadow properties for iOS
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         opacity: 0.6,
         justifyContent: 'center',
         alignItems: 'center',
+        fontWeight:"bold",
     },
     cardMinor: {
         backgroundColor: 'white',

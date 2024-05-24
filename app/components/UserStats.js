@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const UserStats = () => {
     const userListData = [
         { label: 'Admins', count: 2, iconName: 'person' },
-        { label: 'Service Users', count: 6, iconName: 'people' },
-        { label: 'Service Providers', count: 5, iconName: 'business' },
+        { label: 'Service Users', count: 116, iconName: 'people' },
+        { label: 'Service Providers', count: 22, iconName: 'business' },
         { label: 'Deactivated Users', count: 0, iconName: 'block' },
     ];
 
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingTop: 8,
         borderRadius: 10,
-        marginTop: 8,
+        height:200,
+        // marginTop: 8,
         // Shadow properties for iOS
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
 
     },
     container: {
-        marginTop: 10,
+        // marginTop: 10,
         paddingHorizontal: 8,
         marginBottom: 14,
     },

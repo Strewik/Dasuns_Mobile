@@ -43,14 +43,15 @@ const AdminDashScreen = () => {
         </View>
         <View style={styles.container}>
           <View style={styles.column}>
-            <TouchableOpacity
+          <TopServices />
+           
+          </View>
+          <View style={styles.column}>
+          <TouchableOpacity
               onPress={() => navigation.navigate("UserAppointments")}
             >
               <AppointmentsMin />
             </TouchableOpacity>
-          </View>
-          <View style={styles.column}>
-            <TopServices />
           </View>
         </View>
         <View style={{ flex: 1, justifyContent: "center" }}>
@@ -69,16 +70,17 @@ const AdminDashScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row", // Arrange columns horizontally
-    justifyContent: "space-between", // Space evenly between columns
+    flexDirection: "row", 
+    justifyContent: "space-between", 
     // padding: 8,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
   },
   column: {
     flex: 1, // Take equal width
     marginRight: 8, // Add margin between columns
-    backgroundColor: "#f0f0f0", // Optional: Add background color for better visibility
-    // padding: 8, // Optional: Add padding for better spacing
+    backgroundColor: "#f0f0f0", 
+    marginHorizontal: 8,
+    // padding: 8, 
   },
 });
 

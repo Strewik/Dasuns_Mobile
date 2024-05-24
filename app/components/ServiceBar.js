@@ -24,7 +24,7 @@ const ServiceBar = () => {
         <View style={styles.card}>
             <View>
                 <Text className="text-[#37bea7] font-bold  text-1xl  mt-1 ml-3">
-                    All services
+                    Cumulative services
                 </Text>
             </View>
             <BarChart
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         margin: 16,
         marginBottom: 4,
-        marginRight: 16,
+        // marginRight: 16,
         // justifyContent: 'center',
         // alignItems: 'center',
         // Shadow properties for iOS

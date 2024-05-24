@@ -9,8 +9,8 @@ const ServiceUsageProgressBar = () => {
         { label: 'Mobility Guide', percentage: 15, color: '#2ecc71' },
         { label: 'Captioning', percentage: 10, color: '#e74c3c' },
         { label: 'Tactile Sign', percentage: 20, color: '#f39c12' },
-        // { label: 'Ugandan Sign Language', percentage: 5, color: '#9b59b6' },
-        // { label: 'International Sign Language', percentage: 20, color: '#e8ge22' },
+        { label: 'Ugandan Sign Language', percentage: 5, color: '#9b59b6' },
+        { label: 'International Sign Language', percentage: 20, color: '#e8ge22' },
     ];
 
     return (
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         // paddingTop: 8,
         borderRadius: 10,
-        marginTop: 8,
+        marginTop: 16,
         // Shadow properties for iOS
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
