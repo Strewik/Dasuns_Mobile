@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import AverageStarRating from './AverageStarRating';
 
 const App = () => {
-    const averageRating = 3.0; // Replace with your actual average rating from db
+    const averageRating = 3.5; // Replace with your actual average rating from db
     const numberRatitings = 12
     return (
         <View style={styles.card}>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 16,
         marginRight: 8,
+        height: 180,
         // Shadow properties for iOS
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },

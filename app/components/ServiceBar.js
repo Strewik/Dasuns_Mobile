@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 8,
         borderRadius: 10,
-        margin: 16,
+        marginHorizontal: 16,
         marginBottom: 4,
         // marginRight: 16,
         // justifyContent: 'center',
