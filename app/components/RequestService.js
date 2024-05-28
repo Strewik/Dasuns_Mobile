@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         color: '#fff',
+        marginBottom: 3,
         fontWeight: 'bold',
         // opacity: 0.4,
         // justifyContent: 'center',

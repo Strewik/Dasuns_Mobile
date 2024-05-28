@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     // flexDirection: 'row',
     justifyContent: "space-between",
-    paddingTop: 10,
+    paddingTop: 8,
     // height:'60%'
   },
   columnMinor: {
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "white",
-    paddingRight: 8,
-    paddingLeft: 8,
+    paddingHorizontal: 8,
+    // paddingLeft: 8,
     borderRadius: 10,
     marginLeft: 16,
     marginRight: 1,
