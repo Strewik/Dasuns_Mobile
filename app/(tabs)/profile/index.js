@@ -11,10 +11,9 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useRouter,  } from "expo-router";
+import { useRouter } from "expo-router";
 
 const App = () => {
-
   const router = useRouter();
 
   let isServiceProvider = true;
@@ -39,7 +38,7 @@ const App = () => {
     service: "Personal guide",
     natID: "Approved",
     expertEvidence: "Approved",
-    workdays: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+    workdays: ["Mon, ", "Tue, ", "Wed, ", "Thu, ", "Fri, "],
     workHrStart: "07:00am",
     workHrEnd: "10:00pm",
   });
@@ -63,10 +62,14 @@ const App = () => {
             style={styles.profilePicture}
             source={require("../../../assets/images/prince.jpg")}
           />
-          <Text>Name</Text>
-          <Text>{editedProfile.name}</Text>
-          <Text>Account</Text>
-          <Text>{editedProfile.account}</Text>
+          <View style={styles.head}>
+            <Text>Name: </Text>
+            <Text>{editedProfile.name}</Text>
+          </View>
+          <View style={styles.head}>
+            <Text>Account: </Text>
+            <Text>{editedProfile.account}</Text>
+          </View>
         </View>
         {/* Your content here */}
 
@@ -291,14 +294,17 @@ const App = () => {
                       )}
                       <View style={styles.divider}></View>
 
-                      <Text style={styles.text_label}>NIN:</Text>
-                      {editMode === "nin" ? (
+                      <Text style={styles.text_label}>Service:</Text>
+                      {editMode === "service" ? (
                         <View style={styles.editableField}>
                           <TextInput
                             style={styles.text_input}
-                            value={editedProfile.nin}
+                            value={editedProfile.service}
                             onChangeText={(text) =>
-                              setEditedProfile({ ...editedProfile, nin: text })
+                              setEditedProfile({
+                                ...editedProfile,
+                                service: text,
+                              })
                             }
                           />
                           <TouchableOpacity onPress={() => handleSave()}>
@@ -312,9 +318,183 @@ const App = () => {
                       ) : (
                         <View style={styles.editableField}>
                           <Text style={styles.text_data}>
-                            {editedProfile.nin}
+                            {editedProfile.service}
                           </Text>
-                          <TouchableOpacity onPress={() => handleEdit("nin")}>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("service")}
+                          >
+                            <MaterialIcons
+                              name="edit"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                      <View style={styles.divider}></View>
+                      <Text style={styles.text_label}>Identity:</Text>
+                      {editMode === "natID" ? (
+                        <View style={styles.editableField}>
+                          <TextInput
+                            style={styles.text_input}
+                            value={editedProfile.natID}
+                            onChangeText={(text) =>
+                              setEditedProfile({
+                                ...editedProfile,
+                                natID: text,
+                              })
+                            }
+                          />
+                          <TouchableOpacity onPress={() => handleSave()}>
+                            <MaterialIcons
+                              name="save"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.editableField}>
+                          <Text style={styles.text_data}>
+                            {editedProfile.natID}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("natID")}
+                          >
+                            <MaterialIcons
+                              name="edit"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                      <View style={styles.divider}></View>
+                      <Text style={styles.text_label}>Evidence of expertise:</Text>
+                      {editMode === "expertEvidence" ? (
+                        <View style={styles.editableField}>
+                          <TextInput
+                            style={styles.text_input}
+                            value={editedProfile.expertEvidence}
+                            onChangeText={(text) =>
+                              setEditedProfile({ ...editedProfile, expertEvidence: text })
+                            }
+                          />
+                          <TouchableOpacity onPress={() => handleSave()}>
+                            <MaterialIcons
+                              name="save"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.editableField}>
+                          <Text style={styles.text_data}>
+                            {editedProfile.expertEvidence}
+                          </Text>
+                          <TouchableOpacity onPress={() => handleEdit("expertEvidence")}>
+                            <MaterialIcons
+                              name="edit"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                      <View style={styles.divider}></View>
+                      <Text style={styles.text_label}>Working days:</Text>
+                      {editMode === "workdays" ? (
+                        <View style={styles.editableField}>
+                          <TextInput
+                            style={styles.text_input}
+                            value={editedProfile.workdays}
+                            onChangeText={(text) =>
+                              setEditedProfile({ ...editedProfile, workdays: text })
+                            }
+                          />
+                          <TouchableOpacity onPress={() => handleSave()}>
+                            <MaterialIcons
+                              name="save"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.editableField}>
+                          <Text style={styles.text_data}>
+                            {editedProfile.workdays}
+                          </Text>
+                          <TouchableOpacity onPress={() => handleEdit("workdays")}>
+                            <MaterialIcons
+                              name="edit"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                      <View style={styles.divider}></View>
+
+                      <Text style={styles.text_label}>Working hours from:</Text>
+                      {editMode === "workHrStart" ? (
+                        <View style={styles.editableField}>
+                          <TextInput
+                            style={styles.text_input}
+                            value={editedProfile.workHrStart}
+                            onChangeText={(text) =>
+                              setEditedProfile({ ...editedProfile, workHrStart: text })
+                            }
+                          />
+                          <TouchableOpacity onPress={() => handleSave()}>
+                            <MaterialIcons
+                              name="save"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.editableField}>
+                          <Text style={styles.text_data}>
+                            {editedProfile.workHrStart}
+                          </Text>
+                          <TouchableOpacity onPress={() => handleEdit("workHrStart")}>
+                            <MaterialIcons
+                              name="edit"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                      <View style={styles.divider}></View>
+
+                      <Text style={styles.text_label}>Working hours to:</Text>
+                      {editMode === "workHrEnd" ? (
+                        <View style={styles.editableField}>
+                          <TextInput
+                            style={styles.text_input}
+                            value={editedProfile.workHrEnd}
+                            onChangeText={(text) =>
+                              setEditedProfile({ ...editedProfile, workHrEnd: text })
+                            }
+                          />
+                          <TouchableOpacity onPress={() => handleSave()}>
+                            <MaterialIcons
+                              name="save"
+                              size={16}
+                              color="black"
+                            />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <View style={styles.editableField}>
+                          <Text style={styles.text_data}>
+                            {editedProfile.workHrEnd}
+                          </Text>
+                          <TouchableOpacity onPress={() => handleEdit("workHrEnd")}>
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -330,7 +510,9 @@ const App = () => {
               )}
 
               <View>
-                <TouchableOpacity onPress={() => router.push("/profile/CompleteSPProfile")}>
+                <TouchableOpacity
+                  onPress={() => router.push("/profile/CompleteSPProfile")}
+                >
                   <Text>Complete SP Profile</Text>
                 </TouchableOpacity>
               </View>
@@ -356,6 +538,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#009387",
     // alignItems: "center",
     // justifyContent: "center",
+  },
+  head: {
+    flexDirection: "row",
+    color: "#fff",
+    fontSize: 14,
+    // color: '#fff',
+    // // opacity: 0.6,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // fontWeight:"bold",
   },
   content: {
     backgroundColor: "#fff",
