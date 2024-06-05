@@ -12,6 +12,7 @@ import {
 import * as Animatable from "react-native-animatable";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import StarRating from "../../components/StarRating";
 
 const App = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const App = () => {
     gender: "Female",
     disability: "Deaf",
     password: "****************",
-    account: "User-D0005U",
+    account: "Provider-D0005U",
     nin: "CF94052109ZMRK",
     service: "Personal guide",
     natID: "Approved",
@@ -52,6 +53,9 @@ const App = () => {
     // For now, let's log the edited profile data
     console.log("Edited Profile:", editedProfile);
   };
+
+  const rating = 4.25; // Example rating
+
   return (
     <ScrollView style={styles.container}>
       {/* Background */}
@@ -63,12 +67,17 @@ const App = () => {
             source={require("../../../assets/images/prince.jpg")}
           />
           <View style={styles.head}>
-            <Text>Name: </Text>
-            <Text>{editedProfile.name}</Text>
+            {/* <Text>Name: </Text> */}
+            <Text style={styles.name}>{editedProfile.name}</Text>
+          </View>
+          <View style={styles.starContainer}>
+            {/* <Text style={styles.title}>Rating:</Text> */}
+            <StarRating rating={rating} maxStars={5} />
+            <Text style={styles.account}>{rating}</Text>
           </View>
           <View style={styles.head}>
-            <Text>Account: </Text>
-            <Text>{editedProfile.account}</Text>
+            <Text style={styles.account}>Account: </Text>
+            <Text style={styles.account}>{editedProfile.account}</Text>
           </View>
         </View>
         {/* Your content here */}
@@ -358,9 +367,7 @@ const App = () => {
                           <Text style={styles.text_data}>
                             {editedProfile.natID}
                           </Text>
-                          <TouchableOpacity
-                            onPress={() => handleEdit("natID")}
-                          >
+                          <TouchableOpacity onPress={() => handleEdit("natID")}>
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -370,14 +377,19 @@ const App = () => {
                         </View>
                       )}
                       <View style={styles.divider}></View>
-                      <Text style={styles.text_label}>Evidence of expertise:</Text>
+                      <Text style={styles.text_label}>
+                        Evidence of expertise:
+                      </Text>
                       {editMode === "expertEvidence" ? (
                         <View style={styles.editableField}>
                           <TextInput
                             style={styles.text_input}
                             value={editedProfile.expertEvidence}
                             onChangeText={(text) =>
-                              setEditedProfile({ ...editedProfile, expertEvidence: text })
+                              setEditedProfile({
+                                ...editedProfile,
+                                expertEvidence: text,
+                              })
                             }
                           />
                           <TouchableOpacity onPress={() => handleSave()}>
@@ -393,7 +405,9 @@ const App = () => {
                           <Text style={styles.text_data}>
                             {editedProfile.expertEvidence}
                           </Text>
-                          <TouchableOpacity onPress={() => handleEdit("expertEvidence")}>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("expertEvidence")}
+                          >
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -410,7 +424,10 @@ const App = () => {
                             style={styles.text_input}
                             value={editedProfile.workdays}
                             onChangeText={(text) =>
-                              setEditedProfile({ ...editedProfile, workdays: text })
+                              setEditedProfile({
+                                ...editedProfile,
+                                workdays: text,
+                              })
                             }
                           />
                           <TouchableOpacity onPress={() => handleSave()}>
@@ -426,7 +443,9 @@ const App = () => {
                           <Text style={styles.text_data}>
                             {editedProfile.workdays}
                           </Text>
-                          <TouchableOpacity onPress={() => handleEdit("workdays")}>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("workdays")}
+                          >
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -444,7 +463,10 @@ const App = () => {
                             style={styles.text_input}
                             value={editedProfile.workHrStart}
                             onChangeText={(text) =>
-                              setEditedProfile({ ...editedProfile, workHrStart: text })
+                              setEditedProfile({
+                                ...editedProfile,
+                                workHrStart: text,
+                              })
                             }
                           />
                           <TouchableOpacity onPress={() => handleSave()}>
@@ -460,7 +482,9 @@ const App = () => {
                           <Text style={styles.text_data}>
                             {editedProfile.workHrStart}
                           </Text>
-                          <TouchableOpacity onPress={() => handleEdit("workHrStart")}>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("workHrStart")}
+                          >
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -478,7 +502,10 @@ const App = () => {
                             style={styles.text_input}
                             value={editedProfile.workHrEnd}
                             onChangeText={(text) =>
-                              setEditedProfile({ ...editedProfile, workHrEnd: text })
+                              setEditedProfile({
+                                ...editedProfile,
+                                workHrEnd: text,
+                              })
                             }
                           />
                           <TouchableOpacity onPress={() => handleSave()}>
@@ -494,7 +521,9 @@ const App = () => {
                           <Text style={styles.text_data}>
                             {editedProfile.workHrEnd}
                           </Text>
-                          <TouchableOpacity onPress={() => handleEdit("workHrEnd")}>
+                          <TouchableOpacity
+                            onPress={() => handleEdit("workHrEnd")}
+                          >
                             <MaterialIcons
                               name="edit"
                               size={16}
@@ -600,6 +629,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 10,
   },
+  name: {
+    fontSize: 28,
+    color: "#fff",
+    fontWeight: "bold",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  account: {
+    fontSize: 14,
+    color: "#fff",
+    fontWeight: "bold",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -613,481 +657,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
   },
+  starContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
-
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   StatusBar,
-//   Image,
-//   ScrollView,
-// } from "react-native";
-// import React from "react";
-// import * as Animatable from "react-native-animatable";
-
-// const App = () => {
-//   return (
-//     <View>
-//       <View style={styles.container}>
-//         <StatusBar backgroundColor="#009387" barStyle="light-content" />
-//         <View style={styles.head}>
-//           <View style={(alignItems = "center")}>
-//             <Image
-//               style={styles.profilePicture}
-//               source={require("./assets/prince.jpg")}
-//             />
-//           </View>
-//           <Text>Name</Text>
-//           <Text>some cool name</Text>
-//           <Text>Account holder</Text>
-//           <Text>Star rating</Text>
-//         </View>
-//         <View style={styles.body}>
-//           <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-//             <ScrollView>
-//               <Text style={styles.text_header}>Personal data</Text>
-//               <Text style={styles.text_label}>Email:</Text>
-//               <Text style={styles.text_data}>john@mail.com</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Phone number:</Text>
-//               <Text style={styles.text_data}>0752 123456</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Address:</Text>
-//               <Text style={styles.text_data}>Gayaza, Kasangati</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Date of birth:</Text>
-//               <Text style={styles.text_data}>14/07/1994</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Gender:</Text>
-//               <Text style={styles.text_data}>Male</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Nature of disability:</Text>
-//               <Text style={styles.text_data}>Blindness</Text>
-//               <View style={styles.divider}></View>
-//               <Text style={styles.text_label}>Change password</Text>
-//               <Text style={styles.text_data}>************</Text>
-//               <View style={styles.divider}></View>
-//               <View>
-
-//                 <Text>Sign Out</Text>
-//               </View>
-//             </ScrollView>
-//           </Animatable.View>
-//         </View>
-//       </View>
-//     </View>
-//   );
-// };
-
-// export default App;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: "#009387",
-//   },
-//   head: {
-//     backgroundColor: "green",
-//     paddingBottom: 40,
-//     alignContent: "center",
-//   },
-//   body: {
-//     backgroundColor: "gold",
-//     // backgroundColor: "#fff",
-//     borderTopLeftRadius: 30,
-//     borderTopRightRadius: 30,
-//     paddingHorizontal: 30,
-//     paddingVertical: 30,
-//     marginTop: -30,
-//   },
-//   profilePicture: {
-//     // marginTop: 4000,
-//     width: 150,
-//     height: 150,
-//     borderRadius: 75,
-//     marginBottom: 20,
-//     marginTop: 20,
-//     alignItems: "center",
-//     borderWidth: 2,
-//     borderColor: "fff",
-//   },
-//   divider: {
-//     width: "90%",
-//     height: 1,
-//     backgroundColor: "black",
-//     marginTop: 10,
-//     opacity: 0.4,
-//   },
-// });
-
-// // /**
-// //  * Sample React Native App
-// //  * https://github.com/facebook/react-native
-// //  *
-// //  * @format
-// //  * @flow strict-local
-// //  */
-
-// // import React from "react";
-// // import {
-// //   SafeAreaView,
-// //   StyleSheet,
-// //   ScrollView,
-// //   Image,
-// //     TouchableOpacity,
-// //     TextInput,
-// //   View,
-// //   Text,
-// //   StatusBar,
-// // } from "react-native";
-
-// // import {
-// //   Header,
-// //   LearnMoreLinks,
-// //   Colors,
-// //   DebugInstructions,
-// //   ReloadInstructions,
-// // } from "react-native/Libraries/NewAppScreen";
-// // import OverlappingContainers from "../components/OverlappinContainers";
-
-// // const ProfileScreen = () => {
-// //   return (
-// //     <>
-// //       <OverlappingContainers />
-// //     </>
-// //   );
-// // };
-
-// // const styles = StyleSheet.create({
-// //   scrollView: {
-// //     backgroundColor: Colors.lighter,
-// //   },
-// //   engine: {
-// //     position: "absolute",
-// //     right: 0,
-// //   },
-// //   body: {
-// //     backgroundColor: Colors.white,
-// //   },
-// //   sectionContainer: {
-// //     marginTop: 32,
-// //     paddingHorizontal: 24,
-// //   },
-// //   sectionTitle: {
-// //     fontSize: 24,
-// //     fontWeight: "600",
-// //     color: Colors.black,
-// //   },
-// //   sectionDescription: {
-// //     marginTop: 8,
-// //     fontSize: 18,
-// //     fontWeight: "400",
-// //     color: Colors.dark,
-// //   },
-// //   highlight: {
-// //     fontWeight: "700",
-// //   },
-// //   footer: {
-// //     color: Colors.dark,
-// //     fontSize: 12,
-// //     fontWeight: "600",
-// //     padding: 4,
-// //     paddingRight: 12,
-// //     textAlign: "right",
-// //   },
-// // });
-
-// // export default ProfileScreen;
-
-// import React, { useState, useEffect } from "react";
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-//   Image,
-//   TouchableOpacity,
-//   TextInput,
-//   ScrollView,
-// } from "react-native";
-// import axios from "axios";
-// import { useNavigation } from "@react-navigation/native";
-
-// const UserProfileScreen = () => {
-//   const navigation = useNavigation();
-//   const [userData, setUserData] = useState(null);
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   // useEffect(() => {
-//   //   // Replace 'your-api-endpoint' with your actual API endpoint
-//   //   axios.get('your-api-endpoint')
-//   //     .then(response => {
-//   //       setUserData(response.data);
-//   //     })
-//   //     .catch(error => {
-//   //       console.error('Error fetching user data:', error);
-//   //     });
-//   // }, []);
-
-//   const handleEditPress = () => {
-//     setIsEditing(!isEditing);
-//   };
-
-//   // const handleFieldChange = (fieldName, value) => {
-//   //   // Assuming there's a saveUserField function to update the field on the server
-//   //   // You should replace it with your actual function to save changes
-//   //   axios.put('your-api-endpoint', { [fieldName]: value })
-//   //     .then(response => {
-//   //       // Update the local state with the updated user data
-//   //       setUserData(response.data);
-//   //     })
-//   //     .catch(error => {
-//   //       console.error(`Error updating ${fieldName}:`, error);
-//   //     });
-//   // };
-
-//   // if (!userData) {
-//   //   // Loading state or placeholder while waiting for data
-//   //   return (
-//   //     <View style={styles.loadingContainer}>
-//   //       <Text>Loading...</Text>
-//   //     </View>
-//   //   );
-//   // }
-
-//   // const isServiceProvider = userData.userType === 'serviceProvider';
-//   isServiceProvider = true;
-
-//   return (
-//     <ScrollView>
-//       <View style={styles.banner}></View>
-//       <View style={styles.container}>
-//         {/* Profile Picture */}
-//         <Image
-//           //           // source={{ uri: userData.profilePicture }}
-//           style={styles.profilePicture}
-//           source={require("../../../assets/images/prince.jpg")}
-//         />
-
-//         {/* User Type */}
-//         <Text style={styles.userType}>
-//           {/* {userData.userType} */}
-//           service Provider
-//         </Text>
-
-//         {/* Basic Information */}
-//         <View style={styles.userInfoContainer}>
-//           <View style={styles.name}>
-//             <FieldItem
-//               // label="Name:"
-//               // value={userData.name}
-//               value="Kapere Doe"
-//               isEditing={isEditing}
-//               onSave={(value) => handleFieldChange("name", value)}
-//             />
-//           </View>
-
-//           <FieldItem
-//             label="Email:"
-//             // value={userData.email}
-//             value="kapere@mail.com"
-//             isEditing={isEditing}
-//             onSave={(value) => handleFieldChange("email", value)}
-//           />
-
-//           <FieldItem
-//             label="Date of Birth:"
-//             // value={userData.dateOfBirth}
-//             value="20 Jan 1980"
-//             isEditing={isEditing}
-//             onSave={(value) => handleFieldChange("dateOfBirth", value)}
-//           />
-
-//           <FieldItem
-//             label="Telephone Number:"
-//             // value={userData.telephoneNumber}
-//             value=" 07309869235"
-//             isEditing={isEditing}
-//             onSave={(value) => handleFieldChange("telephoneNumber", value)}
-//           />
-
-//           <FieldItem
-//             label="Address:"
-//             // value={userData.address}
-//             value="20 SS Rd, 31406 Kitala"
-//             isEditing={isEditing}
-//             onSave={(value) => handleFieldChange("address", value)}
-//           />
-//         </View>
-
-//         {/* Service Provider Information (if applicable) */}
-//         {isServiceProvider && (
-//           <View style={styles.serviceProviderInfoContainer}>
-//             <FieldItem
-//               label="Date Joined:"
-//               // value={userData.dateJoined}
-//               value="31 Mar 2019"
-//               isEditing={isEditing}
-//               onSave={(value) => handleFieldChange("dateJoined", value)}
-//             />
-
-//             <FieldItem
-//               label="Service Provider ID:"
-//               // value={userData.serviceProviderId}
-//               value="SPID2356"
-//               isEditing={isEditing}
-//               onSave={(value) => handleFieldChange("serviceProviderId", value)}
-//             />
-
-//             <FieldItem
-//               label="Services Provided:"
-//               // value={userData.servicesProvided}
-//               value="Captioning"
-//               isEditing={isEditing}
-//               onSave={(value) => handleFieldChange("servicesProvided", value)}
-//             />
-
-//             <FieldItem
-//               label="Overall Rating:"
-//               // value={userData.overallRating}
-//               value="4 Stars"
-//               isEditing={isEditing}
-//               onSave={(value) => handleFieldChange("overallRating", value)}
-//             />
-//             <TouchableOpacity
-//               style={styles.buttonText}
-//               onPress={() => navigation.navigate("CompleteSPProfile")}
-//             >
-//               <Text>Complete Profile</Text>
-//             </TouchableOpacity>
-//           </View>
-//         )}
-
-//         {/* Edit button */}
-//         <TouchableOpacity style={styles.editButton} onPress={handleEditPress}>
-//           <Text style={styles.editButtonText}>
-//             {isEditing ? "Save" : "Edit"}
-//           </Text>
-//         </TouchableOpacity>
-//       </View>
-//     </ScrollView>
-//   );
-// };
-
-// const FieldItem = ({ label, value, isEditing, onSave }) => {
-//   const [fieldValue, setFieldValue] = useState(value);
-
-//   const handleSave = () => {
-//     onSave(fieldValue);
-//   };
-
-//   return (
-//     <View style={styles.fieldContainer}>
-//       <Text style={styles.label}>{label}</Text>
-//       {isEditing ? (
-//         <TextInput
-//           style={styles.editableField}
-//           value={fieldValue}
-//           onChangeText={setFieldValue}
-//         />
-//       ) : (
-//         <Text style={styles.value}>{fieldValue}</Text>
-//       )}
-//       {isEditing && (
-//         <TouchableOpacity onPress={handleSave}>
-//           <Text style={styles.saveButton}>Save</Text>
-//         </TouchableOpacity>
-//       )}
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     padding: 20,
-//     position: "relative",
-//     // marginTop: -60,
-//   },
-//   banner: {
-//     height: "25%",
-//     backgroundColor: "#37BEA7",
-//   },
-//   loadingContainer: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-//   profilePicture: {
-//     width: 150,
-//     height: 150,
-//     borderRadius: 75,
-//     marginBottom: 20,
-//     marginTop: -70,
-//   },
-//   name: {
-//     fontSize: 30,
-//     fontWeight: "bold",
-//     marginBottom: 20,
-//     alignSelf: "center",
-//   },
-//   userType: {
-//     fontSize: 18,
-//     fontWeight: "bold",
-//     marginBottom: 20,
-//   },
-//   userInfoContainer: {
-//     width: "100%",
-//     marginBottom: 20,
-//   },
-//   serviceProviderInfoContainer: {
-//     width: "100%",
-//   },
-//   fieldContainer: {
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     marginBottom: 10,
-//   },
-//   label: {
-//     fontSize: 16,
-//     // fontWeight: "bold",
-//     marginRight: 10,
-//     color: "f0f0f0",
-//   },
-//   value: {
-//     fontSize: 16,
-//     fontWeight: "bold",
-//   },
-//   editableField: {
-//     flex: 1,
-//     borderWidth: 1,
-//     borderColor: "#ccc",
-//     borderRadius: 5,
-//     padding: 5,
-//   },
-//   saveButton: {
-//     color: "blue",
-//     fontWeight: "bold",
-//   },
-//   button: {
-//     backgroundColor: "#37BEA7",
-//     padding: 10,
-//     borderRadius: 5,
-//     margin: 8,
-//     width: "40%",
-//   },
-//   editButton: {
-//     backgroundColor: "#37BEA7",
-//     padding: 10,
-//     borderRadius: 5,
-//     marginTop: 20,
-//     width: "40%",
-//     alignItems: "center",
-//   },
-//   editButtonText: {
-//     color: "white",
-//     fontWeight: "bold",
-//   },
-// });
-
-// export default UserProfileScreen;

@@ -48,7 +48,7 @@ const ServicesScreen = () => {
     },
     {
       id: "Tactile",
-      image: require("../../../assets/images/Mobility-Guide.jpg"),
+      image: require("../../../assets/images/tactile.jpg"),
       title: "Tactile",
       modalContent: "Content for Tactile",
     },

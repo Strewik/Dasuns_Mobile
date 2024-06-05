@@ -20,8 +20,8 @@ export const views1 = [
        title: "Persoanl Assistant",
     },
     {
-      src: require("../../assets/images//signLanguage.jpg") ,
-       title: "something",
+      image: require("../../assets/images/tactile.jpg") ,
+       title: "Tactile",
     },
  ];
  
