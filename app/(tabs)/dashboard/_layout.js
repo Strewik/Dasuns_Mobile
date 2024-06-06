@@ -2,7 +2,7 @@ import {Stack} from "expo-router";
 
 export default function Layout(){
 
-  const userType = 'client';
+  const userType = 'admin';
 
     return (
         <Stack screenOptions={{headerShown:false}}>

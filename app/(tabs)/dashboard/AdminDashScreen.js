@@ -54,7 +54,7 @@ const AdminDashScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ flex: 1, justifyContent: "center" }}>
+        <View style={{ flex: 1, justifyContent: "center", marginTop:16 }}>
           <ServiceBar />
         </View>
         <View>
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   column: {
     flex: 1, // Take equal width
     marginRight: 8, // Add margin between columns
+    
     backgroundColor: "#f0f0f0", 
     marginHorizontal: 8,
     // padding: 8, 

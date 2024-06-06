@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 10,
     height: 200,
+    marginLeft:8,
     // marginRight: 8,
     // Shadow properties for iOS
     shadowColor: "#000",
